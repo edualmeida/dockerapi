@@ -39,7 +39,7 @@ namespace DockerApi
             {
                 app.UseHsts();
             }
-
+            // project startup
             app.UseHttpsRedirection();
             app.UseMvc();
         }
