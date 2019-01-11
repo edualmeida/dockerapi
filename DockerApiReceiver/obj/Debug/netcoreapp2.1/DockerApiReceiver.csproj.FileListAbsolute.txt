@@ -1,0 +1,14 @@
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\bin\Debug\netcoreapp2.1\DockerApiReceiver.deps.json
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\bin\Debug\netcoreapp2.1\DockerApiReceiver.runtimeconfig.json
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\bin\Debug\netcoreapp2.1\DockerApiReceiver.runtimeconfig.dev.json
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\bin\Debug\netcoreapp2.1\DockerApiReceiver.dll
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\bin\Debug\netcoreapp2.1\DockerApiReceiver.pdb
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\obj\Debug\netcoreapp2.1\DockerApiReceiver.csprojAssemblyReference.cache
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\obj\Debug\netcoreapp2.1\DockerApiReceiver.csproj.CoreCompileInputs.cache
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\obj\Debug\netcoreapp2.1\DockerApiReceiver.RazorAssemblyInfo.cache
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\obj\Debug\netcoreapp2.1\DockerApiReceiver.RazorAssemblyInfo.cs
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\obj\Debug\netcoreapp2.1\DockerApiReceiver.AssemblyInfoInputs.cache
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\obj\Debug\netcoreapp2.1\DockerApiReceiver.AssemblyInfo.cs
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\obj\Debug\netcoreapp2.1\DockerApiReceiver.RazorTargetAssemblyInfo.cache
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\obj\Debug\netcoreapp2.1\DockerApiReceiver.dll
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApiReceiver\obj\Debug\netcoreapp2.1\DockerApiReceiver.pdb

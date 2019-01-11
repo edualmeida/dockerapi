@@ -1,0 +1,31 @@
+version: '2.1'
+
+services:
+  dockerapi:
+    image: dockerapi
+    container-name: dockerapiCt
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+      - rabbitmq
+    ports:
+      - 8080:80
+    networks:
+      - webnet
+
+  rabbitmq:
+     image: rabbitmq:3-management
+     container-name: rabbitmqCt
+     hostname: localhost
+     ports:
+         - 15672:15672
+         - 5671:5671
+         - 5672:5672
+     volumes:
+         - ~/rabbitmq:/var/lib/rabbitmq 
+     environment:
+         - RABBITMQ_DEFAULT_USER=guest
+         - RABBITMQ_DEFAULT_PASS=guest
+    networks:
+      - webnet

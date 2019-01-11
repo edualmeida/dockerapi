@@ -1,0 +1,57 @@
+﻿{
+    "ReRoutes" : [   
+        {
+            "DownstreamPathTemplate": "/",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts" : [
+              {
+                  "Host": "dockerapireceiver",
+                  "Port": 80
+              }
+          ],
+            "UpstreamPathTemplate": "/dockerapireceiver/",
+            "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+        },   
+        {
+          "DownstreamPathTemplate": "/api/{catchAll}",
+          "DownstreamScheme": "http",
+          "DownstreamHostAndPorts" : [
+            {
+                "Host": "dockerapireceiver",
+                "Port": 80
+            }
+        ],
+          "UpstreamPathTemplate": "/dockerapireceiver/{catchAll}",
+          "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+        },  
+        {
+            "DownstreamPathTemplate": "/",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts" : [
+              {
+                  "Host": "dockerapi",
+                  "Port": 80
+              }
+          ],
+            "UpstreamPathTemplate": "/dockerapi/",
+            "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+         },   
+        {
+          "DownstreamPathTemplate": "/api/{catchAll}",
+          "DownstreamScheme": "http",
+          "DownstreamHostAndPorts" : [
+            {
+                "Host": "dockerapi",
+                "Port": 80
+            }
+        ],
+          "UpstreamPathTemplate": "/dockerapi/{catchAll}",
+          "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+        }
+        
+    ],
+    "GlobalConfiguration":{
+        "BaseUrl": "http://localhost:8080"
+    }
+
+}

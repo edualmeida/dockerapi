@@ -1,0 +1,61 @@
+version: '2.1'
+
+services:
+  dockerapi:
+    image: dockerapi
+    container_name: dockerapiCt
+    hostname: dockerapi
+    build: 
+        context: ./DockerApi
+        dockerfile: Dockerfile 
+    links:
+      - "rabbitmq"
+    ports:
+      - 8081:80
+    depends_on:
+      - rabbitmq
+
+  dockerapireceiver:
+    image: dockerapireceiver
+    container_name: dockerapireceiverCt
+    hostname: dockerapireceiver
+    build: 
+        context: ./DockerApiReceiver
+        dockerfile: Dockerfile 
+    links:
+      - "rabbitmq"
+    ports:
+      - 8082:82
+    depends_on:
+      - rabbitmq
+
+  gatewayapi:
+    image: gatewayapi
+    container_name: gatewayapiCt
+    build: 
+        context: ./GatewayApi
+        dockerfile: Dockerfile 
+    links:
+      - "rabbitmq"
+      - "dockerapi"
+      - "dockerapireceiver"
+    ports:
+      - 8080:80
+    depends_on:
+      - rabbitmq
+      - dockerapi
+      - dockerapireceiver
+
+  rabbitmq:
+     image: rabbitmq:3
+     container_name: rabbitmq    
+     hostname: rabbitmq 
+     ports:
+         - 15672:15672
+         - 5671:5671
+         - 5672:5672
+     volumes:
+         - ~/rabbitmq:/var/lib/rabbitmq/mnesia          
+     environment:
+         - RABBITMQ_DEFAULT_USER=guest
+         - RABBITMQ_DEFAULT_PASS=guest

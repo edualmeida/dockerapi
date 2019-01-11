@@ -1,0 +1,14 @@
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\bin\Debug\netcoreapp2.1\DockerApi.deps.json
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\bin\Debug\netcoreapp2.1\DockerApi.runtimeconfig.json
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\bin\Debug\netcoreapp2.1\DockerApi.runtimeconfig.dev.json
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\bin\Debug\netcoreapp2.1\DockerApi.dll
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\bin\Debug\netcoreapp2.1\DockerApi.pdb
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\obj\Debug\netcoreapp2.1\DockerApi.csprojAssemblyReference.cache
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\obj\Debug\netcoreapp2.1\DockerApi.csproj.CoreCompileInputs.cache
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\obj\Debug\netcoreapp2.1\DockerApi.RazorAssemblyInfo.cache
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\obj\Debug\netcoreapp2.1\DockerApi.RazorAssemblyInfo.cs
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\obj\Debug\netcoreapp2.1\DockerApi.AssemblyInfoInputs.cache
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\obj\Debug\netcoreapp2.1\DockerApi.AssemblyInfo.cs
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\obj\Debug\netcoreapp2.1\DockerApi.RazorTargetAssemblyInfo.cache
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\obj\Debug\netcoreapp2.1\DockerApi.dll
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\DockerApi\obj\Debug\netcoreapp2.1\DockerApi.pdb
