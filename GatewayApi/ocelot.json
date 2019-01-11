@@ -10,7 +10,11 @@
               }
           ],
             "UpstreamPathTemplate": "/dockerapireceiver/",
-            "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+            "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ],
+            "AuthenticationOptions": {  
+                "AuthenticationProviderKey": "Bearer", 
+                "AllowedScopes": []  
+            }
         },   
         {
           "DownstreamPathTemplate": "/api/{catchAll}",
@@ -22,7 +26,11 @@
             }
         ],
           "UpstreamPathTemplate": "/dockerapireceiver/{catchAll}",
-          "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+          "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ],
+          "AuthenticationOptions": {  
+              "AuthenticationProviderKey": "Bearer",  
+              "AllowedScopes": []  
+          }
         },  
         {
             "DownstreamPathTemplate": "/",
@@ -34,7 +42,11 @@
               }
           ],
             "UpstreamPathTemplate": "/dockerapi/",
-            "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
+            "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ],
+            "AuthenticationOptions": {  
+                "AuthenticationProviderKey": "Bearer",  
+                "AllowedScopes": []  
+            }
          },   
         {
           "DownstreamPathTemplate": "/api/{catchAll}",
@@ -46,8 +58,24 @@
             }
         ],
           "UpstreamPathTemplate": "/dockerapi/{catchAll}",
-          "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]
-        }
+          "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ],
+          "AuthenticationOptions": {  
+              "AuthenticationProviderKey": "Bearer",  
+              "AllowedScopes": []  
+          }
+        },
+        {
+            "DownstreamPathTemplate": "/api/{catchAll}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts" : [
+              {
+                  "Host": "userinfoapi",
+                  "Port": 80
+              }
+          ],
+            "UpstreamPathTemplate": "/userinfoapi/{catchAll}",
+            "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "Options" ]            
+          }
         
     ],
     "GlobalConfiguration":{

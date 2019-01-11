@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DockerApiReceiver.Controllers
@@ -12,9 +14,10 @@ namespace DockerApiReceiver.Controllers
     {
         // GET api/values
         [HttpGet]
+        [Authorize(JwtBearerDefaults.AuthenticationScheme)]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "RECEIVER", "value2" };
+            return new string[] { "RECEIVER", "v2" };
         }
 
         // GET api/values/5

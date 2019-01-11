@@ -25,7 +25,21 @@ services:
     links:
       - "rabbitmq"
     ports:
-      - 8082:82
+      - 8082:80
+    depends_on:
+      - rabbitmq
+
+  userinfoapi:
+    image: userinfoapi
+    container_name: userinfoapi
+    hostname: userinfoapi
+    build: 
+        context: ./UserInfoApi
+        dockerfile: Dockerfile 
+    links:
+      - "rabbitmq"
+    ports:
+      - 8083:80
     depends_on:
       - rabbitmq
 
@@ -39,12 +53,14 @@ services:
       - "rabbitmq"
       - "dockerapi"
       - "dockerapireceiver"
+      - "userinfoapi"
     ports:
       - 8080:80
     depends_on:
       - rabbitmq
       - dockerapi
       - dockerapireceiver
+      - userinfoapi
 
   rabbitmq:
      image: rabbitmq:3

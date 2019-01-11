@@ -8,6 +8,7 @@ namespace UserInfoApi.Models
 {
     public class UserInfoRole
     {
+        //
         public string Name { get; set; }          
     }
 }

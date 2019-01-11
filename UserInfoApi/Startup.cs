@@ -73,7 +73,7 @@ namespace UserInfoApi
               }               
               );
 
-              // Enable the use of an [Authorize("Bearer")] attribute on methods and classes to protect.
+            // Enable the use of an [Authorize("Bearer")] attribute on methods and classes to protect.
             services.AddAuthorization(auth =>
             {
                 auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
