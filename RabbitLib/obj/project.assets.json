@@ -4402,6 +4402,9 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
       "projectUniqueName": "C:\\Users\\eduardo.almeida\\Documents\\Projects\\DockerApi\\RabbitLib\\RabbitLib.csproj",
       "projectName": "RabbitLib",
@@ -4437,35 +4440,35 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
-          "Autofac": {
-            "target": "Package",
-            "version": "[4.8.1, )"
-          },
-          "Microsoft.CSharp": {
-            "target": "Package",
-            "version": "[4.5.0, )"
-          },
-          "Microsoft.Extensions.Logging": {
-            "target": "Package",
-            "version": "[2.2.0, )"
-          },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.0.3, )",
+            "version": "2.0.3",
             "autoReferenced": true
-          },
-          "Newtonsoft.Json": {
-            "target": "Package",
-            "version": "[12.0.1, )"
           },
           "Polly": {
             "target": "Package",
-            "version": "[6.1.2, )"
+            "version": "6.1.2"
+          },
+          "Microsoft.CSharp": {
+            "target": "Package",
+            "version": "4.5.0"
+          },
+          "Microsoft.Extensions.Logging": {
+            "target": "Package",
+            "version": "2.2.0"
           },
           "RabbitMQ.Client": {
             "target": "Package",
-            "version": "[5.1.0, )"
+            "version": "5.1.0"
+          },
+          "Autofac": {
+            "target": "Package",
+            "version": "4.8.1"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "12.0.1"
           }
         },
         "imports": [

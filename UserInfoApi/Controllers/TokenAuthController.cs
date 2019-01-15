@@ -11,6 +11,8 @@ using Newtonsoft.Json;
 using UserInfoApi.Auth;
 using UserInfoApi.Models;
 using UserInfoApi.Services;
+using RabbitLib;
+using UserInfoApi.IntegrationEvents.Events;
 
 namespace UserInfoApi.Controllers
 {

@@ -1,3 +1,6 @@
+using RabbitLib;
+using System;
+
 namespace UserInfoApi.IntegrationEvents.Events
 {
     public class UserLoggedinEvent: IntegrationEvent
@@ -6,9 +9,9 @@ namespace UserInfoApi.IntegrationEvents.Events
 
         public string UserName { get; }
 
-        public Guid RequestId { get; set; }
+        public string RequestId { get; set; }
 
-        public UserLoggedinEvent(string userId, string userName, Guid requestId,)
+        public UserLoggedinEvent(string userId, string userName, string requestId)
         {
             UserId = userId;
             UserName = userName;
