@@ -1,0 +1,9 @@
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\RabbitLib\obj\Debug\netstandard2.0\RabbitLib.csprojAssemblyReference.cache
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\RabbitLib\obj\Debug\netstandard2.0\RabbitLib.csproj.CoreCompileInputs.cache
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\RabbitLib\obj\Debug\netstandard2.0\RabbitLib.AssemblyInfoInputs.cache
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\RabbitLib\obj\Debug\netstandard2.0\RabbitLib.AssemblyInfo.cs
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\RabbitLib\bin\Debug\netstandard2.0\RabbitLib.deps.json
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\RabbitLib\bin\Debug\netstandard2.0\RabbitLib.dll
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\RabbitLib\bin\Debug\netstandard2.0\RabbitLib.pdb
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\RabbitLib\obj\Debug\netstandard2.0\RabbitLib.dll
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\RabbitLib\obj\Debug\netstandard2.0\RabbitLib.pdb

@@ -19,13 +19,15 @@ namespace UserInfoApi.Controllers
     public class TokenAuthController: Controller
     {
         private readonly UserInfoService _repository;
+        private readonly IEventBus _eventBus;
 
-        public TokenAuthController(UserInfoService userInfoService)
+        public TokenAuthController(UserInfoService userInfoService, IEventBus eventBus)
         {
             if (null == userInfoService)
                 throw new ArgumentNullException("context");
 
             _repository = userInfoService;
+            _eventBus = eventBus;
         }
 
         [HttpPost]
@@ -61,6 +63,13 @@ namespace UserInfoApi.Controllers
 
                 tokenStr = new JwtSecurityTokenHandler().WriteToken(token);
                 
+                var eventMessage = new UserLoggedinEvent(existUser.Id.ToString(), existUser.Username, tokenStr);
+
+                // Once basket is checkout, sends an integration event to
+                // ordering.api to convert basket to order and proceeds with
+                // order creation process
+                _eventBus.Publish(eventMessage);
+
                 return JsonConvert.SerializeObject(new RequestResult
                 {
                     State = RequestState.Success,
