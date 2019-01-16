@@ -1,6 +1,21 @@
 version: '2.1'
 
 services:
+
+  loggerapi:
+    image: loggerapi
+    container_name: loggerapi
+    hostname: loggerapi
+    build: 
+        context: ./
+        dockerfile: LoggerApiDockerfile 
+    links:
+      - "rabbitmq"
+    ports:
+      - 8084:80
+    depends_on: 
+      - rabbitmq
+
   dockerapi:
     image: dockerapi
     container_name: dockerapiCt
@@ -34,8 +49,8 @@ services:
     container_name: userinfoapi
     hostname: userinfoapi
     build: 
-        context: ./UserInfoApi
-        dockerfile: Dockerfile 
+        context: ./
+        dockerfile: UserInfoApiDockerfile 
     links:
       - "rabbitmq"
     ports:

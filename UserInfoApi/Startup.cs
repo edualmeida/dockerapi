@@ -21,6 +21,7 @@ using UserInfoApi.Services;
 using RabbitMQ.Client;
 using RabbitLib;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
 
 namespace UserInfoApi
 {
@@ -34,7 +35,7 @@ namespace UserInfoApi
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             var tokenAuthOption = TokenAuthOptionBuilder.BuildFromConfig();
                         
@@ -89,7 +90,12 @@ namespace UserInfoApi
             services.AddScoped<UserInfoService>();
             services.AddCustomIntegrations(Configuration);
             services.AddEventBus(Configuration);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);            
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);          
+
+            var container = new ContainerBuilder();
+            container.Populate(services);
+            return new AutofacServiceProvider(container.Build());
+  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -148,6 +154,15 @@ namespace UserInfoApi
             app.UseAuthentication();
             //app.UseHttpsRedirection();
             app.UseMvc();
+
+            //ConfigureEventBus(app);
         }
+
+        // protected virtual void ConfigureEventBus(IApplicationBuilder app)
+        // {
+        //     var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+        //     eventBus.Subscribe<OrderStatusChangedToAwaitingValidationIntegrationEvent, OrderStatusChangedToAwaitingValidationIntegrationEventHandler>();
+        //     eventBus.Subscribe<OrderStatusChangedToPaidIntegrationEvent, OrderStatusChangedToPaidIntegrationEventHandler>();
+        // }
     }
 }

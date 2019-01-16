@@ -1,0 +1,17 @@
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\obj\Debug\netcoreapp2.1\LoggerApi.csprojAssemblyReference.cache
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\obj\Debug\netcoreapp2.1\LoggerApi.csproj.CoreCompileInputs.cache
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\obj\Debug\netcoreapp2.1\LoggerApi.RazorAssemblyInfo.cache
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\obj\Debug\netcoreapp2.1\LoggerApi.RazorAssemblyInfo.cs
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\obj\Debug\netcoreapp2.1\LoggerApi.AssemblyInfoInputs.cache
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\obj\Debug\netcoreapp2.1\LoggerApi.AssemblyInfo.cs
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\bin\Debug\netcoreapp2.1\LoggerApi.deps.json
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\bin\Debug\netcoreapp2.1\LoggerApi.runtimeconfig.json
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\bin\Debug\netcoreapp2.1\LoggerApi.runtimeconfig.dev.json
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\bin\Debug\netcoreapp2.1\LoggerApi.dll
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\bin\Debug\netcoreapp2.1\LoggerApi.pdb
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\bin\Debug\netcoreapp2.1\RabbitLib.dll
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\bin\Debug\netcoreapp2.1\RabbitLib.pdb
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\obj\Debug\netcoreapp2.1\LoggerApi.RazorTargetAssemblyInfo.cache
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\obj\Debug\netcoreapp2.1\LoggerApi.csproj.CopyComplete
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\obj\Debug\netcoreapp2.1\LoggerApi.dll
+C:\Users\eduardo.almeida\Documents\Projects\DockerApi\LoggerApi\obj\Debug\netcoreapp2.1\LoggerApi.pdb

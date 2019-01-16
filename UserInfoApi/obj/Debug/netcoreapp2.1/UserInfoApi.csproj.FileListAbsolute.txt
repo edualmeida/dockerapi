@@ -11,6 +11,7 @@ C:\Users\eduardo.almeida\Documents\Projects\DockerApi\userinfoapi\bin\Debug\netc
 C:\Users\eduardo.almeida\Documents\Projects\DockerApi\userinfoapi\obj\Debug\netcoreapp2.1\UserInfoApi.RazorTargetAssemblyInfo.cache
 C:\Users\eduardo.almeida\Documents\Projects\DockerApi\userinfoapi\obj\Debug\netcoreapp2.1\UserInfoApi.dll
 C:\Users\eduardo.almeida\Documents\Projects\DockerApi\userinfoapi\obj\Debug\netcoreapp2.1\UserInfoApi.pdb
-C:\Users\eduardo.almeida\Documents\Projects\DockerApi\UserInfoApi\obj\Debug\netcoreapp2.1\UserInfoApi.csprojResolveAssemblyReference.cache
 C:\Users\eduardo.almeida\Documents\Projects\DockerApi\UserInfoApi\bin\Debug\netcoreapp2.1\RabbitLib.dll
 C:\Users\eduardo.almeida\Documents\Projects\DockerApi\UserInfoApi\bin\Debug\netcoreapp2.1\RabbitLib.pdb
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\UserInfoApi\obj\Debug\netcoreapp2.1\UserInfoApi.csprojAssemblyReference.cache
+c:\Users\eduardo.almeida\Documents\Projects\DockerApi\UserInfoApi\obj\Debug\netcoreapp2.1\UserInfoApi.csproj.CopyComplete

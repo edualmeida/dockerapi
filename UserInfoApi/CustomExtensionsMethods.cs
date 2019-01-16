@@ -15,6 +15,98 @@ namespace UserInfoApi
 {
     static class CustomExtensionsMethods
     {
+        public static IServiceCollection AddCustomIntegrations(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //services.AddTransient<IIdentityService, IdentityService>();
+            //services.AddTransient<Func<DbConnection, IIntegrationEventLogService>>(
+            //    sp => (DbConnection c) => new IntegrationEventLogService(c));
+
+            //services.AddTransient<IOrderingIntegrationEventService, OrderingIntegrationEventService>();
+
+            services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
+            {
+                var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
+
+
+                var factory = new ConnectionFactory()
+                {
+                    HostName = configuration["EventBusConnection"]
+                };
+
+                if (!string.IsNullOrEmpty(configuration["EventBusUserName"]))
+                {
+                    factory.UserName = configuration["EventBusUserName"];
+                }
+
+                if (!string.IsNullOrEmpty(configuration["EventBusPassword"]))
+                {
+                    factory.Password = configuration["EventBusPassword"];
+                }
+
+                var retryCount = 5;
+                if (!string.IsNullOrEmpty(configuration["EventBusRetryCount"]))
+                {
+                    retryCount = int.Parse(configuration["EventBusRetryCount"]);
+                }
+
+                return new DefaultRabbitMQPersistentConnection(factory, retryCount);
+            });
+            return services;
+        }
+
+        public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
+        {
+            var subscriptionClientName = configuration["SubscriptionClientName"];
+
+            services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
+            {
+                var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
+                var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
+                var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
+                var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+
+                var retryCount = 5;
+                if (!string.IsNullOrEmpty(configuration["EventBusRetryCount"]))
+                {
+                    retryCount = int.Parse(configuration["EventBusRetryCount"]);
+                }
+
+                return new EventBusRabbitMQ(rabbitMQPersistentConnection, iLifetimeScope, eventBusSubcriptionsManager, 
+                    subscriptionClientName, retryCount);
+            });
+
+            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+
+            return services;
+        }
+
+        
+        //public static IServiceCollection AddCustomConfiguration(this IServiceCollection services, IConfiguration configuration)
+        //{
+        //    services.AddOptions();
+        //    services.Configure<OrderingSettings>(configuration);
+        //    services.Configure<ApiBehaviorOptions>(options =>
+        //    {
+        //        options.InvalidModelStateResponseFactory = context =>
+        //        {
+        //            var problemDetails = new ValidationProblemDetails(context.ModelState)
+        //            {
+        //                Instance = context.HttpContext.Request.Path,
+        //                Status = StatusCodes.Status400BadRequest,
+        //                Detail = "Please refer to the errors property for additional details."
+        //            };
+
+        //            return new BadRequestObjectResult(problemDetails)
+        //            {
+        //                ContentTypes = { "application/problem+json", "application/problem+xml" }
+        //            };
+        //        };
+        //    });
+
+        //    return services;
+        //}
+
         //public static IServiceCollection AddApplicationInsights(this IServiceCollection services, IConfiguration configuration)
         //{
         //    services.AddApplicationInsightsTelemetry(configuration);
@@ -151,96 +243,7 @@ namespace UserInfoApi
         //    return services;
         //}
 
-        public static IServiceCollection AddCustomIntegrations(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //services.AddTransient<IIdentityService, IdentityService>();
-            //services.AddTransient<Func<DbConnection, IIntegrationEventLogService>>(
-            //    sp => (DbConnection c) => new IntegrationEventLogService(c));
-
-            //services.AddTransient<IOrderingIntegrationEventService, OrderingIntegrationEventService>();
-
-            services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
-            {
-                var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
-
-
-                var factory = new ConnectionFactory()
-                {
-                    HostName = configuration["EventBusConnection"]
-                };
-
-                if (!string.IsNullOrEmpty(configuration["EventBusUserName"]))
-                {
-                    factory.UserName = configuration["EventBusUserName"];
-                }
-
-                if (!string.IsNullOrEmpty(configuration["EventBusPassword"]))
-                {
-                    factory.Password = configuration["EventBusPassword"];
-                }
-
-                var retryCount = 5;
-                if (!string.IsNullOrEmpty(configuration["EventBusRetryCount"]))
-                {
-                    retryCount = int.Parse(configuration["EventBusRetryCount"]);
-                }
-
-                return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
-            });
-            return services;
-        }
-
-        //public static IServiceCollection AddCustomConfiguration(this IServiceCollection services, IConfiguration configuration)
-        //{
-        //    services.AddOptions();
-        //    services.Configure<OrderingSettings>(configuration);
-        //    services.Configure<ApiBehaviorOptions>(options =>
-        //    {
-        //        options.InvalidModelStateResponseFactory = context =>
-        //        {
-        //            var problemDetails = new ValidationProblemDetails(context.ModelState)
-        //            {
-        //                Instance = context.HttpContext.Request.Path,
-        //                Status = StatusCodes.Status400BadRequest,
-        //                Detail = "Please refer to the errors property for additional details."
-        //            };
-
-        //            return new BadRequestObjectResult(problemDetails)
-        //            {
-        //                ContentTypes = { "application/problem+json", "application/problem+xml" }
-        //            };
-        //        };
-        //    });
-
-        //    return services;
-        //}
-
-        public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
-        {
-            var subscriptionClientName = configuration["SubscriptionClientName"];
-
-            services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
-            {
-                var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
-                var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
-                var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
-                var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
-
-                var retryCount = 5;
-                if (!string.IsNullOrEmpty(configuration["EventBusRetryCount"]))
-                {
-                    retryCount = int.Parse(configuration["EventBusRetryCount"]);
-                }
-
-                return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, 
-                    subscriptionClientName, retryCount);
-            });
-
-            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
-
-            return services;
-        }
+        
 
         //public static IServiceCollection AddCustomAuthentication(this IServiceCollection services, IConfiguration configuration)
         //{

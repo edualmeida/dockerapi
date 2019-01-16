@@ -1,5 +1,5 @@
 using Autofac;
-using Microsoft.Extensions.Logging;
+//using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Polly;
@@ -19,7 +19,7 @@ namespace RabbitLib
         const string BROKER_NAME = "app_event_bus";
 
         private readonly IRabbitMQPersistentConnection _persistentConnection;
-        private readonly ILogger<EventBusRabbitMQ> _logger;
+        //private readonly ILogger<EventBusRabbitMQ> _logger;
         private readonly IEventBusSubscriptionsManager _subsManager;
         private readonly ILifetimeScope _autofac;
         private readonly string AUTOFAC_SCOPE_NAME = "app_event_bus";
@@ -28,11 +28,11 @@ namespace RabbitLib
         private IModel _consumerChannel;
         private string _queueName;
 
-        public EventBusRabbitMQ(IRabbitMQPersistentConnection persistentConnection, ILogger<EventBusRabbitMQ> logger,
-            ILifetimeScope autofac, IEventBusSubscriptionsManager subsManager, string queueName = null, int retryCount = 5)
+        public EventBusRabbitMQ(IRabbitMQPersistentConnection persistentConnection, ILifetimeScope autofac, 
+            IEventBusSubscriptionsManager subsManager, string queueName = null, int retryCount = 5)
         {
             _persistentConnection = persistentConnection ?? throw new ArgumentNullException(nameof(persistentConnection));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            //_logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _subsManager = subsManager ?? new InMemoryEventBusSubscriptionsManager();
             _queueName = queueName;
             _consumerChannel = CreateConsumerChannel();
@@ -73,13 +73,13 @@ namespace RabbitLib
                 .Or<SocketException>()
                 .WaitAndRetry(_retryCount, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), (ex, time) =>
                 {
-                    _logger.LogWarning(ex.ToString());
+                    //_logger.LogWarning(ex.ToString());
+                    Console.WriteLine(ex.ToString());
                 });
 
             using (var channel = _persistentConnection.CreateModel())
             {
-                var eventName = @event.GetType()
-                    .Name;
+                var eventName = @event.GetType().Name;
 
                 channel.ExchangeDeclare(exchange: BROKER_NAME,
                                     type: "direct");
@@ -97,6 +97,8 @@ namespace RabbitLib
                                      mandatory:true,
                                      basicProperties: properties,
                                      body: body);
+
+                    Console.WriteLine("MQBasicPublish: " + eventName);
                 });
             }
         }
